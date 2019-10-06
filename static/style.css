@@ -1,3 +1,39 @@
 .container {
     padding-top: 70px;
   }
+
+.fa-gamepad {
+  font-size: 30px;
+}
+
+.card {
+  border: none;
+}
+
+.card-group {
+  cursor: pointer;
+  width: 40%;
+  margin: auto;
+}
+
+.card-text {
+  font-size: 50px;
+}
+
+.card-1, .card-4 {
+  border-right: 10px solid black;
+  border-bottom: 10px solid black;
+}
+
+.card-2, .card-5 {
+  border-right: 10px solid black;
+  border-bottom: 10px solid black;
+}
+
+.card-3, .card-6 {
+  border-bottom: 10px solid black;
+}
+
+.card-7, .card-8 {
+  border-right: 10px solid black;
+}

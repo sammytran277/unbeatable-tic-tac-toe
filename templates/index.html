@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block title %}
-  Test
+  Unbeatable Tic-Tac-Toe | Play Game
 {% endblock %}
 
 {% block div %}
@@ -18,5 +18,67 @@
 
 {% block main %}
   <div class="container">
+    <h2 class="font-weight-light text-center text-lg mt-4 mb-0">Play Game!</h2>
+    <hr class="mt-2 mb-4">
+
+    <form action="" class="form-inline justify-content-center mb-1">
+      <button type="button" class="btn btn-primary mx-1 shadow-sm" onclick="choosePiece(this)">X</button>
+      <button type="button" class="btn btn-primary mx-1 shadow-sm" onclick="choosePiece(this)">O</button>
+    </form>
+    <p class="text-center font-weight-light mb-5">Start game or select player</p>
+
+    <div class="card-group">
+      <div class="card card-1">
+        <div class="card-body">
+          <p id="1" onclick="userClick(this)" class="card-text text-center align-middle">1</p>
+        </div>
+      </div>
+      <div class="card card-2">
+        <div class="card-body">
+          <p id="2" onclick="userClick(this)" class="card-text text-center">2</p>
+        </div>
+      </div>
+      <div class="card card-3">
+        <div class="card-body">
+          <p id="3" onclick="userClick(this)" class="card-text text-center">3</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-group">
+      <div class="card card-4">
+        <div class="card-body">
+          <p id="4" onclick="userClick(this)" class="card-text text-center">4</p>
+        </div>
+      </div>
+      <div class="card card-5">
+        <div class="card-body">
+          <p id="5" onclick="userClick(this)" class="card-text text-center">5</p>
+        </div>
+      </div>
+      <div class="card card-6">
+        <div class="card-body">
+          <p id="6" onclick="userClick(this)" class="card-text text-center">6</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-group mb-5">
+      <div class="card card-7">
+        <div class="card-body">
+          <p id="7" onclick="userClick(this)" class="card-text text-center">7</p>
+        </div>
+      </div>
+      <div class="card card-8">
+        <div class="card-body">
+          <p id="8" onclick="userClick(this)" class="card-text text-center">8</p>
+        </div>
+      </div>
+      <div class="card card-9">
+        <div class="card-body">
+          <p id="9" onclick="userClick(this)" class="card-text text-center">9</p>
+        </div>
+      </div>
+    </div>
   </div>
 {% endblock %}
