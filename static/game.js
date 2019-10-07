@@ -35,39 +35,102 @@ function userClick(cardSquare) {
         cardSquare.innerHTML = userPiece;
         moveHistory.push(parseInt(cardSquare.id));
 
-        // Check the board state and end game if result has been determined
-        if (gameOver(moveHistory)) {
-            alert("Game over! This part of the code is under construction ATM!");
+        if (checkGameOver(userPiece, moveHistory) != 1) {
+            console.log("Commencing game over screen (to be implemented)");
         } else {
             generateComputerMove(moveHistory);
         }
     }
 }
 
-var legalMoves;
-var availableMoves;
-var computerMove;
-
 function generateComputerMove(moveHistory) {
     // This is a test function that generates a random computer move
 
-    legalMoves = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    availableMoves = legalMoves.filter(function(move) {
+    const legalMoves = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    let availableMoves = legalMoves.filter(function(move) {
         return !moveHistory.includes(move);
     });
 
-    if (availableMoves.length == 0) {
-        //TODO: Handle the draw
-        alert("Game over! It's a draw!");
-    }
-
-    computerMove = availableMoves[Math.floor(Math.random() * (availableMoves.length - 1))];
+    let computerMove = availableMoves[Math.floor(Math.random() * (availableMoves.length - 1))];
     document.getElementById(`${computerMove}`).innerHTML = computerPiece;
     moveHistory.push(computerMove);
+
+    if (checkGameOver(computerPiece, moveHistory) != 1) {
+        console.log("Commencing game over screen (to be implemented)");
+    }
 }
 
-function gameOver(moveHistory) {
-    // TODO: Implement a way to check for board win
+function determineGameResult(piece, moveHistory) {
+    // Given a piece, check if the current game is won, drawn, or ongoing
 
-    return false;
+    const possibleWins = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7],
+                         [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]];
+
+    let pieceMoveHistory = [];
+
+    // Separate the given piece's moves from the other player's moves
+    moveHistory.forEach(function(move) {
+        if (piece == "X") {
+            if (moveHistory.indexOf(move) % 2 == 0) {
+                pieceMoveHistory.push(move);
+            }
+        } else {
+            if (!(moveHistory.indexOf(move) % 2 == 0)) {
+                pieceMoveHistory.push(move);
+            }
+        }
+    });
+
+    // Check each possible win and return "win" if a combination is valid
+    for (let i = 0; i < 8; i++) {
+        if (checkPossibleWin(pieceMoveHistory, possibleWins[i])) {
+            return "win";
+        }
+    }
+
+    // If no wins were found and 9 moves have been played, the game is a draw
+    if (moveHistory.length == 9) {
+        return "draw";
+    }
+
+    // If there is no win and the game is not drawn, the game is still ongoing
+    return "ongoing";
+}
+
+function checkPossibleWin(pieceMoveHistory, possibleWin) {
+    /* Given a piece's move history and a possible win, return a boolean value 
+       depending on whether or not the possible win is in the move history */
+
+    for (let j = 0; j < 3; j++) {
+        if (pieceMoveHistory.indexOf(possibleWin[j]) == -1) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+/* TODO: Create a pop-up screen to display the game result,
+      allow player to input name to be on match history,
+      allow player to click a button to play again (write function to reset everything) */
+
+function checkGameOver(piece, moveHistory) {
+    // Checks if the game is over given a piece and array of moves
+
+    let gameResult = determineGameResult(piece, moveHistory);
+
+    if (gameResult == "win") {
+        if (piece == userPiece) {
+            alert("You won!");
+            return 0;
+        } else {
+            alert("You lost!");
+            return 0;
+        }
+    } else if (gameResult == "draw") {
+        alert("You drew!");
+        return 0;
+    } else {
+        return 1;
+    }
 }
