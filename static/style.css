@@ -37,3 +37,8 @@
 .card-7, .card-8 {
   border-right: 10px solid black;
 }
+
+.meme {
+    display: block;
+    margin: 15px auto;
+}

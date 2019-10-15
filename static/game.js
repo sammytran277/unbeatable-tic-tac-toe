@@ -35,9 +35,7 @@ function userClick(cardSquare) {
         cardSquare.innerHTML = userPiece;
         moveHistory.push(parseInt(cardSquare.id));
 
-        if (checkGameOver(userPiece, moveHistory) != 1) {
-            console.log("Commencing game over screen (to be implemented)");
-        } else {
+        if (!checkGameOver(userPiece, moveHistory)) {
             generateComputerMove(moveHistory);
         }
     }
@@ -55,9 +53,7 @@ function generateComputerMove(moveHistory) {
     document.getElementById(`${computerMove}`).innerHTML = computerPiece;
     moveHistory.push(computerMove);
 
-    if (checkGameOver(computerPiece, moveHistory) != 1) {
-        console.log("Commencing game over screen (to be implemented)");
-    }
+    checkGameOver(computerPiece, moveHistory);
 }
 
 function determineGameResult(piece, moveHistory) {
@@ -110,10 +106,6 @@ function checkPossibleWin(pieceMoveHistory, possibleWin) {
     return true;
 }
 
-/* TODO: Create a pop-up screen to display the game result,
-      allow player to input name to be on match history,
-      allow player to click a button to play again (write function to reset everything) */
-
 function checkGameOver(piece, moveHistory) {
     // Checks if the game is over given a piece and array of moves
 
@@ -121,16 +113,54 @@ function checkGameOver(piece, moveHistory) {
 
     if (gameResult == "win") {
         if (piece == userPiece) {
-            alert("You won!");
-            return 0;
+            showModal("win");
+            return true;
         } else {
-            alert("You lost!");
-            return 0;
+            showModal("lose");
+            return true;
         }
     } else if (gameResult == "draw") {
-        alert("You drew!");
-        return 0;
+        showModal("draw");
+        return true;
     } else {
-        return 1;
+        return false;
     }
+}
+
+function showModal(gameResult) {
+    // Handles the display of the modal and which image to show
+
+    $('#gameResultModal').modal({backdrop: "static"});
+
+    if (gameResult == "win") {
+        $('#gameResultModal').find('.modal-title').text("You won!");
+        $('#gameResultModal').find('.meme').attr("src", "static/win.jpg");
+    } else if (gameResult == "lose") {
+        $('#gameResultModal').find('.modal-title').text("You lost!");
+        $('#gameResultModal').find('.meme').attr("src", "static/lose.jpg");
+    } else {
+        $('#gameResultModal').find('.modal-title').text("You drew!");
+        $('#gameResultModal').find('.meme').attr("src", "static/draw.jpg");
+    }
+}
+
+function resetGame() {
+    // Resets the game so it can be played again
+
+    // Close the modal
+    $('#gameResultModal').modal("hide");
+
+    // Reset global game variables
+    userPiece = "";
+    computerPiece = "";
+    moveHistory = [];
+
+    // Reset board
+    for (let square = 1; square < 10; square++) {
+        document.getElementById(`${square}`).innerHTML = `${square}`;
+    }
+
+    // Reset piece highlighters
+    document.getElementById("piece-X").removeAttribute("style");
+    document.getElementById("piece-O").removeAttribute("style");
 }

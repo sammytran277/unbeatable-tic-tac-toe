@@ -22,10 +22,10 @@
     <hr class="mt-2 mb-4">
 
     <form action="" class="form-inline justify-content-center mb-1">
-      <button type="button" class="btn btn-primary mx-1 shadow-sm" onclick="choosePiece(this)">X</button>
-      <button type="button" class="btn btn-primary mx-1 shadow-sm" onclick="choosePiece(this)">O</button>
+      <button type="button" id="piece-X" class="btn btn-primary mx-1 shadow-sm" onclick="choosePiece(this)">X</button>
+      <button type="button" id="piece-O" class="btn btn-primary mx-1 shadow-sm" onclick="choosePiece(this)">O</button>
     </form>
-    <p class="text-center font-weight-light mb-5">Start game or select player</p>
+    <p class="text-center font-weight-light mb-5">Select a piece to start the game</p>
 
     <div class="card-group">
       <div class="card card-1">
@@ -77,6 +77,33 @@
       <div class="card card-9">
         <div class="card-body">
           <p id="9" onclick="userClick(this)" class="card-text text-center">9</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="gameResultModal" tabindex="-1" role="dialog" aria-labelledby="gameResultModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title col-12 text-center"id="gameResultModal"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Thanks for playing! If you'd like to publically display your game on the global match history, just input your name and hit submit!</p>
+            <form class="form-inline justify-content-center" action="">
+              <div class="form-group">
+                <input type="input" class="form-control" id="name" placeholder="Enter your name here!">
+                <button type="submit" class="btn btn-primary ml-2">Submit</button>
+              </div>
+            </form>
+            <img class="meme justify-content-center mb-2" width="400">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="resetGame()">Play Again</button>
+          </div>
         </div>
       </div>
     </div>
