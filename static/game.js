@@ -9,13 +9,14 @@ function choosePiece(button) {
 
     if (userPiece == "") {
         userPiece = button.innerHTML;
+        chosePiece = true;
         button.setAttribute("style", "border-bottom: 2px solid red;");
     }
 
     // Set computerPiece depending on what user chose
     (userPiece == "X") ? computerPiece = "O" : computerPiece = "X";
 
-    if (userPiece == "O") {
+    if (userPiece == "O" && moveHistory.length == 0) {
         generateComputerMove(moveHistory);
     }
 }
@@ -24,10 +25,12 @@ function userClick(cardSquare) {
     // userClick displays the user's move and asks the computer to make a move
 
     if (userPiece == "") {
-        alert("Please choose a piece!");
-    
+        userPiece = "X";
+        computerPiece = "O";
+    }
+
     // Alert user if they try to place a piece on an occupied square
-    } else if (cardSquare.innerHTML == "O" || cardSquare.innerHTML == "X") {
+    if (cardSquare.innerHTML == "O" || cardSquare.innerHTML == "X") {
         alert("This square already has a piece!");
     
     // Drop piece into the square, check the board state, and generate computer move
