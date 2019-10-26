@@ -42,3 +42,23 @@
     display: block;
     margin: 15px auto;
 }
+
+table {
+  text-align: center;
+}
+
+td {
+  padding-top: 12px;
+}
+
+.about {
+  font-size: 21px;
+}
+
+.fa-github {
+  padding: 5px;
+  font-size: 30px;
+  width: 30px;
+  text-decoration: none;
+  color: #333232;
+}

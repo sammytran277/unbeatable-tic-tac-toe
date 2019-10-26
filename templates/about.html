@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Unbeatable Tic-Tac-Toe | About
+{% endblock %}
+
+{% block div %}
+  <li class="nav-item">
+    <a class="nav-link" href="/">Play Game<span class="sr-only">(current)</span></a>
+  </li>
+  <li class="nav-item active">
+    <a class="nav-link" href="/about">About</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/match_history">Match History</a>
+  </li>
+{% endblock %}
+
+{% block main %}
+  <div class="container">
+    <h2 class="font-weight-light text-center text-lg mt-4 mb-0">About</h2>
+    <hr class="mt-2 mb-4">
+    <div class="d-flex justify-content-center">
+      <img class="mb-4" width="250" height = "250" src="static/tictactoe.png">
+    </div>
+    
+    <p class="about font-weight-light text-left">
+      Unbeatable Tic-Tac-Toe is my second project and was inspired by 
+      <a href="https://en.wikipedia.org/wiki/Tic-tac-toe#Strategy">this Wikipedia article</a>
+      on how a player might play a perfect game of Tic-Tac-Toe. As someone who is interested in the design of
+      modern Chess playing computers, I thought that starting with Tic-Tac-Toe would be a good way to get an 
+      introduction to how a programmer might go about developing software that can play games. 
+  
+    <p class="about font-weight-light text-left">
+      Throughout this project, I've had the opportunity to gain experience in Python, JavaScript, and PostgreSQL. If you would like to see the source code for this project or report a bug,
+      feel free to contact me at sammytran277@gmail.com or click the button below to visit my Github profile! Thank you for taking the time to look through my project! — Sammy Tran
+      <a target="_blank" rel="noopener noreferrer" href="https://github.com/sammytran277" class="fa fa-github"></a>
+    </p>
+  </div>
+{% endblock %}

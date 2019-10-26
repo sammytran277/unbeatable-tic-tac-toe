@@ -2,6 +2,7 @@
 
 var userPiece = "";
 var computerPiece = "";
+var result = "";
 var moveHistory = [];
 
 function choosePiece(button) {
@@ -102,13 +103,16 @@ function checkGameOver(piece, moveHistory) {
     if (gameResult == "win") {
         if (piece == userPiece) {
             showModal("win");
+            result = "Win";
             return true;
         } else {
             showModal("lose");
+            result = "Lose";
             return true;
         }
     } else if (gameResult == "draw") {
         showModal("draw");
+        result = "Draw";
         return true;
     } else {
         return false;
@@ -132,6 +136,37 @@ function showModal(gameResult) {
     }
 }
 
+$("#matchSubmit").submit(function(event) {
+    event.preventDefault();
+
+    let username = $("#matchSubmit").find("input[name='username']").val();
+    let game_notation = "";
+    let counter = 0;
+    
+    for (let i = 1, n = Math.ceil(moveHistory.length / 2); i <= n; i++) {
+        
+        let moveOne = "X".concat(moveHistory[counter]);
+        let moveTwo = (moveHistory[counter + 1] == undefined) ? "" : "O".concat(moveHistory[counter + 1]);
+    
+        game_notation = game_notation.concat(`${i}. ${moveOne} ${moveTwo} `);
+        counter += 2;
+    }
+
+    let json_data = {"username": `${username}`, "result": `${result}`, 
+                     "game_notation": `${game_notation}`, "move_history": `${moveHistory}`};
+
+    $.ajax({
+        type: "POST",
+        url: "/match_history",
+        data: JSON.stringify(json_data),
+        contentType: "application/json",
+        dataType: "json"
+    });
+
+    $('#gameResultModal').modal("hide");
+    resetGame();
+});
+
 function resetGame() {
     // Resets the game so it can be played again
 
@@ -141,7 +176,9 @@ function resetGame() {
     // Reset global game variables
     userPiece = "";
     computerPiece = "";
+    result = "";
     moveHistory = [];
+    $("#username").val("");
 
     // Reset board
     for (let square = 1; square < 10; square++) {
