@@ -383,9 +383,23 @@ function playCenter(moveHistory) {
 }
 
 function playOppositeCorner(moveHistory) {
-    // TODO
+    /* Return the opposite corner to the one played by the user 
+       if it is available, otherwise return 0 */
 
-    return 0;
+    let lastPlayedMove = moveHistory[moveHistory.length - 1];
+
+    switch (lastPlayedMove) {
+        case 1:
+            return (moveHistory.indexOf(9) == -1) ? 9 : 0;
+        case 3:
+            return (moveHistory.indexOf(7) == -1) ? 7 : 0;
+        case 7:
+            return (moveHistory.indexOf(3) == -1) ? 3 : 0;
+        case 9:
+            return (moveHistory.indexOf(1) == -1) ? 1 : 0;
+        default:
+            return 0;
+    }
 }
 
 function playEmptyCorner(moveHistory) {
