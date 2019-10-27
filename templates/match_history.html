@@ -20,12 +20,38 @@
   <div class="container">
     <h2 class="font-weight-light text-center text-lg mt-4 mb-0">Match History</h2>
     <hr class="mt-2 mb-4">
-    <p class="text-center">Computer's Results Against Humans: 10 wins 3242 draws 0 losses</p>
+    <p class="text-center">
+      Record against the computer: 
+      {{ results["wins"] }} 
+
+      {% if results["wins"] == 1 %}
+        win
+      {% else %}
+        wins
+      {% endif %} 
+
+      {{ results["draws"] }} 
+
+      {% if results["draws"] == 1 %}
+        draw
+      {% else %}
+        draws
+      {% endif %} 
+
+      {{ results["losses"] }} 
+
+      {% if results["losses"] == 1 %}
+        loss
+      {% else %}
+        losses
+      {% endif %} 
+    </p>
     <table class="table">
       <thead>
         <tr>
           <th scope="col">Username</th>
           <th scope="col">Date</th>
+          <th scope="col">Piece</th>
           <th scope="col">Game Notation</th>
           <th scope="col">Result</th>
           <th scope="col">Replay Match</th>
@@ -38,6 +64,7 @@
             <td>{{ match[1] }}</td>
             <td>{{ match[2] }}</td>
             <td>{{ match[3] }}</td>
+            <td>{{ match[4] }}</td>
             <td><button type="button" class="btn btn-outline-secondary"><i class="fa fa-eye fa-lg"></i></button></td>
           </tr>
         {% endfor %}

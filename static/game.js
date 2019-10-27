@@ -107,7 +107,7 @@ function checkGameOver(piece, moveHistory) {
             return true;
         } else {
             showModal("lose");
-            result = "Lose";
+            result = "Loss";
             return true;
         }
     } else if (gameResult == "draw") {
@@ -152,8 +152,8 @@ $("#matchSubmit").submit(function(event) {
         counter += 2;
     }
 
-    let json_data = {"username": `${username}`, "result": `${result}`, 
-                     "game_notation": `${game_notation}`, "move_history": `${moveHistory}`};
+    let json_data = {"username": `${username}`, "result": `${result}`, "piece": `${userPiece}`,
+                     "game_notation": `${game_notation}`, "move_history": `${moveHistory.join(" ")}`};
 
     $.ajax({
         type: "POST",
