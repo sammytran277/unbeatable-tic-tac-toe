@@ -11,7 +11,7 @@ function choosePiece(button) {
     if (userPiece == "") {
         userPiece = button.innerHTML;
         chosePiece = true;
-        button.setAttribute("style", "border-bottom: 2px solid red;");
+        button.classList.add("btn-outline-custom");
     }
 
     // Set computerPiece depending on what user chose
@@ -26,21 +26,31 @@ function userClick(cardSquare) {
     // userClick displays the user's move and asks the computer to make a move
 
     if (userPiece == "") {
+        document.getElementById("piece-X").classList.add("btn-outline-custom");
         userPiece = "X";
         computerPiece = "O";
     }
 
+    // Prevent the user from playing before the computer has made its move
+    if (moveHistory.length != 0) {
+        if (userPiece == "X" && moveHistory.length % 2 != 0) {
+            return;
+        } else if (userPiece == "O" && moveHistory.length % 2 == 0) {
+            return;
+        }
+    }
+
     // Alert user if they try to place a piece on an occupied square
-    if (cardSquare.innerHTML == "O" || cardSquare.innerHTML == "X") {
-        alert("This square already has a piece!");
+    if (document.getElementById(cardSquare).innerHTML == "O" || document.getElementById(cardSquare).innerHTML == "X") {
+        return;
     
     // Drop piece into the square, check the board state, and generate computer move
     } else {
-        cardSquare.innerHTML = userPiece;
-        moveHistory.push(parseInt(cardSquare.id));
+        document.getElementById(cardSquare).innerHTML = userPiece;
+        moveHistory.push(parseInt(cardSquare));
 
         if (!checkGameOver(userPiece, moveHistory)) {
-            generateComputerMove(moveHistory);
+            setTimeout(function() {generateComputerMove(moveHistory);}, 1000);
         }
     }
 }
@@ -140,6 +150,7 @@ $("#matchSubmit").submit(function(event) {
     event.preventDefault();
 
     let username = $("#matchSubmit").find("input[name='username']").val();
+
     let game_notation = "";
     let counter = 0;
     
@@ -181,13 +192,13 @@ function resetGame() {
     $("#username").val("");
 
     // Reset board
-    for (let square = 1; square < 10; square++) {
-        document.getElementById(`${square}`).innerHTML = `${square}`;
+    for (let i = 1; i < 10; i++) {
+        document.getElementById(`${i}`).innerHTML = "&nbsp;";
     }
 
     // Reset piece highlighters
-    document.getElementById("piece-X").removeAttribute("style");
-    document.getElementById("piece-O").removeAttribute("style");
+    document.getElementById("piece-X").classList.remove("btn-outline-custom");
+    document.getElementById("piece-O").classList.remove("btn-outline-custom");
 }
 
 function generateComputerMove(moveHistory) {

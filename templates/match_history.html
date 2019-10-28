@@ -65,10 +65,29 @@
             <td>{{ match[2] }}</td>
             <td>{{ match[3] }}</td>
             <td>{{ match[4] }}</td>
-            <td><button type="button" class="btn btn-outline-secondary"><i class="fa fa-eye fa-lg"></i></button></td>
+            <td><button type="button" class="btn btn-outline-secondary" onclick="replayGame()"><i class="fa fa-eye fa-lg"></i></button></td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
+
+    <div class="modal fade" id="replayGameModal" tabindex="-1" role="dialog" aria-labelledby="replayGameModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title col-12 text-center">CURRENTLY UNDER CONSTRUCTION
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button></h5>
+          </div>
+          <div class="modal-body">
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" onclick="closeModal()">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 {% endblock %}

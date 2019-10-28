@@ -22,61 +22,61 @@
     <hr class="mt-2 mb-4">
 
     <form action="" class="form-inline justify-content-center mb-1">
-      <button type="button" id="piece-X" class="btn btn-primary mx-1 shadow-sm" onclick="choosePiece(this)">X</button>
-      <button type="button" id="piece-O" class="btn btn-primary mx-1 shadow-sm" onclick="choosePiece(this)">O</button>
+      <button type="button" id="piece-X" class="mx-1 shadow-sm btn btn-outline-dark" onclick="choosePiece(this)">X</button>
+      <button type="button" id="piece-O" class="mx-1 shadow-sm btn btn-outline-dark" onclick="choosePiece(this)">O</button>
     </form>
     <p class="text-center font-weight-light mb-5">Select a piece or click to start the game</p>
-
+    
     <div class="card-group">
       <div class="card card-1">
-        <div class="card-body">
-          <p id="1" onclick="userClick(this)" class="card-text text-center align-middle">1</p>
+        <div class="card-body" onclick="userClick(1)">
+          <p id="1" class="card-text text-center align-middle">&nbsp;</p>
         </div>
       </div>
       <div class="card card-2">
-        <div class="card-body">
-          <p id="2" onclick="userClick(this)" class="card-text text-center">2</p>
+        <div class="card-body" onclick="userClick(2)">
+          <p id="2" class="card-text text-center">&nbsp;</p>
         </div>
       </div>
       <div class="card card-3">
-        <div class="card-body">
-          <p id="3" onclick="userClick(this)" class="card-text text-center">3</p>
+        <div class="card-body" onclick="userClick(3)">
+          <p id="3" class="card-text text-center">&nbsp;</p>
         </div>
       </div>
     </div>
 
     <div class="card-group">
       <div class="card card-4">
-        <div class="card-body">
-          <p id="4" onclick="userClick(this)" class="card-text text-center">4</p>
+        <div class="card-body" onclick="userClick(4)">
+          <p id="4" class="card-text text-center">&nbsp;</p>
         </div>
       </div>
       <div class="card card-5">
-        <div class="card-body">
-          <p id="5" onclick="userClick(this)" class="card-text text-center">5</p>
+        <div class="card-body" onclick="userClick(5)">
+          <p id="5" class="card-text text-center">&nbsp;</p>
         </div>
       </div>
       <div class="card card-6">
-        <div class="card-body">
-          <p id="6" onclick="userClick(this)" class="card-text text-center">6</p>
+        <div class="card-body" onclick="userClick(6)">
+          <p id="6" class="card-text text-center">&nbsp;</p>
         </div>
       </div>
     </div>
 
     <div class="card-group mb-5">
       <div class="card card-7">
-        <div class="card-body">
-          <p id="7" onclick="userClick(this)" class="card-text text-center">7</p>
+        <div class="card-body" onclick="userClick(7)">
+          <p id="7" class="card-text text-center">&nbsp;</p>
         </div>
       </div>
       <div class="card card-8">
-        <div class="card-body">
-          <p id="8" onclick="userClick(this)" class="card-text text-center">8</p>
+        <div class="card-body" onclick="userClick(8)">
+          <p id="8" class="card-text text-center">&nbsp;</p>
         </div>
       </div>
       <div class="card card-9">
-        <div class="card-body">
-          <p id="9" onclick="userClick(this)" class="card-text text-center">9</p>
+        <div class="card-body" onclick="userClick(9)">
+          <p id="9" class="card-text text-center">&nbsp;</p>
         </div>
       </div>
     </div>
@@ -85,24 +85,20 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title col-12 text-center"id="gameResultModal"></h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+            <h5 class="modal-title col-12 text-center"></h5>
           </div>
           <div class="modal-body">
             <p>Thanks for playing! If you'd like to publically display your game on the global match history, just input your name and hit submit!</p>
-            <form id="matchSubmit" class="form-inline justify-content-center" name="username" autocomplete="off">
+            <form id="matchSubmit" class="form-inline justify-content-center needs-validation" name="username" autocomplete="off">
               <div class="form-group">
-                <input type="input" class="form-control" name= "username" id="username" placeholder="Enter your name here!">
-                <button type="submit" class="btn btn-primary ml-2">Submit</button>
+                <input type="input" class="form-control" name= "username" id="username" placeholder="Enter your name here!" required>
+                <button type="submit" class="shadow-sm btn btn-outline-dark ml-2">Submit</button>
               </div>
             </form>
             <img class="meme justify-content-center mb-2" width="400">
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onclick="resetGame()">Play Again</button>
+            <button type="button" class="shadow-sm btn btn-outline-dark" onclick="resetGame()">Play Again</button>
           </div>
         </div>
       </div>
