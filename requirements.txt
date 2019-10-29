@@ -6,3 +6,6 @@ Flask == 1.1.1
 
 # app.py: 4
 psycopg2 == 2.8.4
+
+# Used by Heroku
+gunicorn == 19.9.0
