@@ -65,7 +65,7 @@
             <td>{{ match[2] }}</td>
             <td>{{ match[3] }}</td>
             <td>{{ match[4] }}</td>
-            <td><button type="button" class="btn btn-outline-secondary" onclick="replayGame()"><i class="fa fa-eye fa-lg"></i></button></td>
+            <td><button type="button" class="btn btn-outline-secondary" onclick="replayGame(' {{ match[0] }} ','{{ match[2] }}','{{ match[5] }}')"><i class="fa fa-eye fa-lg"></i></button></td>
           </tr>
         {% endfor %}
       </tbody>
@@ -75,13 +75,66 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title col-12 text-center">CURRENTLY UNDER CONSTRUCTION
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button></h5>
+            <h5 id="replay-modal-title" class="modal-title col-12 text-center"></h5>
           </div>
           <div class="modal-body">
-
+            <div class="card-group replay-card-group mt-4">
+              <div class="card card-1">
+                <div class="card-body">
+                  <p id="1" class="replay-card-text text-center">&nbsp;</p>
+                </div>
+              </div>
+              <div class="card card-2">
+                <div class="card-body">
+                  <p id="2" class="replay-card-text text-center">&nbsp;</p>
+                </div>
+              </div>
+              <div class="card card-3">
+                <div class="card-body">
+                  <p id="3" class="replay-card-text text-center">&nbsp;</p>
+                </div>
+              </div>
+            </div>
+        
+            <div class="card-group replay-card-group">
+              <div class="card card-4">
+                <div class="card-body">
+                  <p id="4" class="replay-card-text text-center">&nbsp;</p>
+                </div>
+              </div>
+              <div class="card card-5">
+                <div class="card-body">
+                  <p id="5" class="replay-card-text text-center">&nbsp;</p>
+                </div>
+              </div>
+              <div class="card card-6">
+                <div class="card-body">
+                  <p id="6" class="replay-card-text text-center">&nbsp;</p>
+                </div>
+              </div>
+            </div>
+        
+            <div class="card-group replay-card-group mb-5">
+              <div class="card card-7">
+                <div class="card-body">
+                  <p id="7" class="replay-card-text text-center">&nbsp;</p>
+                </div>
+              </div>
+              <div class="card card-8">
+                <div class="card-body">
+                  <p id="8" class="replay-card-text text-center">&nbsp;</p>
+                </div>
+              </div>
+              <div class="card card-9">
+                <div class="card-body">
+                  <p id="9" class="replay-card-text text-center">&nbsp;</p>
+                </div>
+              </div>
+            </div>
+            <form class="form-inline justify-content-center mb-1">
+              <button type="button" class="mx-4 shadow-sm btn btn-outline-dark" onclick="previousMove()"><i class="fa fa-arrow-left"></i></button>
+              <button type="button" class="mx-4 shadow-sm btn btn-outline-dark" onclick="nextMove()"><i class="fa fa-arrow-right"></i></button>
+            </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline-dark" onclick="closeModal()">Close</button>

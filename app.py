@@ -18,7 +18,6 @@ def about():
 
 @app.route("/match_history", methods=["GET", "POST"])
 def match_history():
-
     # Try to connect to PostgreSQL database and print an error if an exception is raised
     try:
         conn = psycopg2.connect(DATABASE_URL, sslmode="require")
@@ -55,7 +54,8 @@ def match_history():
         results = {"wins": wins[0], "losses": losses[0], "draws": draws[0]}
 
         # Get all games from the match history table
-        cur.execute("SELECT username, date, piece, game_notation, result FROM match_history")
+        cur.execute("SELECT username, date, piece, game_notation, result, move_history FROM match_history")
         match_history = cur.fetchall()
+        match_history.reverse()
 
         return render_template("match_history.html", match_history=match_history, results=results)

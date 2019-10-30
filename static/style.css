@@ -26,12 +26,21 @@
 
 .card-group {
   cursor: pointer;
-  width: 40%;
+  width: 35%;
   margin: auto;
+}
+
+.replay-card-group {
+  width: 65%;
 }
 
 .card-text {
   font-size: 50px;
+  user-select: none;
+}
+
+.replay-card-text {
+  font-size: 30px;
   user-select: none;
 }
 
