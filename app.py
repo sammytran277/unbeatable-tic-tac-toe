@@ -1,10 +1,11 @@
 from flask import Flask, request, render_template
-from settings import dbname, user, password
 from datetime import datetime
 import psycopg2
+import os
 
 
 app = Flask(__name__)
+DATABASE_URL = os.environ["DATABASE_URL"]
 
 
 @app.route("/")
@@ -20,7 +21,7 @@ def match_history():
 
     # Try to connect to PostgreSQL database and print an error if an exception is raised
     try:
-        conn = psycopg2.connect(dbname=dbname, user=user, password=password)
+        conn = psycopg2.connect(DATABASE_URL, sslmode="require")
     except:
         print("An error has occurred while trying to connect to the PostgreSQL database.")
 

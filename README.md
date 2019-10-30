@@ -51,6 +51,7 @@ UNDER CONSTRUCTION
   * Python 3.7.2
   * Flask 1.1.1
   * Psycopg2 2.8.4
+  * Gunicorn 19.9.0
 
 ### **Database Technologies**
 
