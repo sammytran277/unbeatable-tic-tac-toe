@@ -1,6 +1,6 @@
 // This file contains code related to the replaying of games from the match history
 
-var movesArray;
+var movesArray = [];
 var moveCounter = 0;
 
 function replayGame(username, piece, moveHistory) {
@@ -36,5 +36,14 @@ function previousMove() {
 }
 
 function closeModal() {
+    movesArray.forEach(function(square) {
+        document.getElementById(`${square}`).innerHTML = "&nbsp";
+    });
+
+    document.getElementById("replay-modal-title").innerHTML = "";
+
+    movesArray = [];
+    moveCounter = 0;
+
     $('#replayGameModal').modal("hide");
 }
