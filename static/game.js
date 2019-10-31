@@ -136,13 +136,13 @@ function showModal(gameResult) {
 
     if (gameResult == "win") {
         $('#gameResultModal').find('.modal-title').text("You won!");
-        $('#gameResultModal').find('.meme').attr("src", "static/win.jpg");
+        $('#gameResultModal').find('.meme').attr("src", "images/win.jpg");
     } else if (gameResult == "lose") {
         $('#gameResultModal').find('.modal-title').text("You lost!");
-        $('#gameResultModal').find('.meme').attr("src", "static/lose.jpg");
+        $('#gameResultModal').find('.meme').attr("src", "images/lose.jpg");
     } else {
         $('#gameResultModal').find('.modal-title').text("You drew!");
-        $('#gameResultModal').find('.meme').attr("src", "static/draw.jpg");
+        $('#gameResultModal').find('.meme').attr("src", "images/draw.jpg");
     }
 }
 
