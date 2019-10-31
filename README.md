@@ -1,6 +1,6 @@
 # **Unbeatable Tic-Tac-Toe**
 
-![](images/landing.png)
+![](static/images/landing.png)
 
 # **Table of Contents**
 
@@ -26,15 +26,15 @@ https://unbeatable-tic-tac-toe-game.herokuapp.com/
 
 ### **Play Against the Computer**
 
-![](images/gameplay.gif)
+![](static/images/gameplay.gif)
 
 ### **Submit Your Game**
 
-![](images/submit.gif)
+![](static/images/submit.gif)
 
 ### **Replay Previous Games**
 
-![](images/replay.gif)
+![](static/images/replay.gif)
 
 ## **Technologies**
 
