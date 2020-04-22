@@ -212,10 +212,10 @@ function generateComputerMove(moveHistory) {
         computerMove = blockWin(userPiece, moveHistory);
     } else if (playFork(computerPiece, moveHistory) != 0) {
         computerMove = playFork(computerPiece, moveHistory);
+    } else if (threatenWin(userPiece, computerPiece, moveHistory) != 0) {
+        computerMove = threatenWin(userPiece, computerPiece, moveHistory); 
     } else if (blockFork(userPiece, moveHistory)) {
         computerMove = blockFork(userPiece, moveHistory);
-    } else if (threatenWin(userPiece, computerPiece, moveHistory) != 0) {
-        computerMove = threatenWin(userPiece, computerPiece, moveHistory);
     } else if (playCenter(moveHistory) != 0) {
         computerMove = playCenter(moveHistory);
     } else if (playOppositeCorner(moveHistory) != 0) {
@@ -416,8 +416,17 @@ function threatenWin(userPiece, computerPiece, moveHistory) {
         copyMoveHistory = moveHistory.slice();
         copyMoveHistory.push(availableMoves[i]);
 
-        if (countWins(computerPiece, copyMoveHistory) >= 1 && countForks(userPiece, copyMoveHistory) <= 1) {
-            return availableMoves[i];
+        // Check if move threatens a win
+        if (countWins(computerPiece, copyMoveHistory)) {
+            // Try to block the win
+            if (playWin(computerPiece, copyMoveHistory) != 0) {
+                copyMoveHistory.push(playWin(computerPiece, copyMoveHistory));
+            }
+
+            // Check if blocking the win causes a fork
+            if (countWins(userPiece, copyMoveHistory) <= 1) {
+                return availableMoves[i];
+            }
         }
     }
 
